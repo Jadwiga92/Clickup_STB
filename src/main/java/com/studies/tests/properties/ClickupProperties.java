@@ -20,7 +20,7 @@ public class ClickupProperties {
 
     public static String getTeamId() {
         if (getProperty(TEAM_ID).isEmpty() || getProperty(TEAM_ID).startsWith("YOUR")) {
-            return getProperty("TEAM_ID");
+            return System.getProperty("TEAM_ID");
         } else {
             return getProperty(TEAM_ID);
 
