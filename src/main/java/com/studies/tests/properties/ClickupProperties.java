@@ -6,15 +6,12 @@ public class ClickupProperties {
     private static final String TOKEN = "clickup.token";
     private static final String TEAM_ID = "clickup.team.id";
 
-    private static String getProperty(String key) {
-        return ResourceBundle.getBundle("clickup").getString(key);
 
-    }
 
     public static String getToken() {
 
         if (getProperty(TOKEN).isEmpty() || getProperty(TOKEN).startsWith("YOUR")) {
-            return System.getProperty(TOKEN);
+            return System.getProperty("TOKEN");
         } else {
             return getProperty(TOKEN);
 
@@ -23,10 +20,14 @@ public class ClickupProperties {
 
     public static String getTeamId() {
         if (getProperty(TEAM_ID).isEmpty() || getProperty(TEAM_ID).startsWith("YOUR")) {
-            return getProperty(TEAM_ID);
+            return getProperty("TEAM_ID");
         } else {
             return getProperty(TEAM_ID);
 
         }
+    }
+    private static String getProperty(String key) {
+        return ResourceBundle.getBundle("clickup").getString(key);
+
     }
 }
